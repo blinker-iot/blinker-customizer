@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>blinker Customizer</title>
+    <!-- 只是为了让这个示例更好看，可以删 -->
+    <script src="assets/formJson.js"></script>
+    <link rel="stylesheet" href="assets/app.css">
+</head>
+
+<body>
+    <div class="main-box">
+        <div class="header" id="header">
+        </div>
+        <div class="text" id="showBox">
+
+        </div>
+        <div class="bottom-btn-box">
+            <button onclick="getState()">心跳</button>
+            <button onclick="tapButton()">开关</button>
+        </div>
+    </div>
+    <script>
+        let appData = {};
+        let showBox = document.getElementById("showBox");
+        window.addEventListener("message", receiveMessage, false);
+
+        function send2Device(data) {
+            window.parent.postMessage(data, '*')
+        }
+
+        function getState() {
+            send2Device({ 'get': 'state' })
+        }
+
+        function tapButton() {
+            if (appData.deviceData.switch == 'on')
+                send2Device({ 'switch': 'off' })
+            else
+                send2Device({ 'switch': 'on' })
+        }
+
+        function receiveMessage(e) {
+            if (typeof e.data.headerHeight != 'undefined') {
+                let header = document.getElementById('header');
+                header.style.height = e.data.headerHeight + 'px'
+            }
+            Object.assign(appData, e.data)
+            showBox.innerHTML = generateRes(JSON.stringify(appData))
+        }
+    </script>
+</body>
+
+</html>

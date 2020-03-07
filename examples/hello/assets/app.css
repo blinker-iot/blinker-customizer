@@ -1,0 +1,45 @@
+html {
+  height: 100vh;
+  position: relative;
+}
+body {
+  margin: 0;
+}
+
+.main-box {
+  position: absolute;
+  top: 0;
+  background: radial-gradient(circle, #61b4fa, #389bee, #0076d9);
+  height: 100vh;
+  width: 100vw;
+}
+
+.bottom-btn-box {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  margin: 15px;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-radius: 50%;
+  outline: medium;
+}
+
+.text {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 15px;
+  padding: 15px;
+  width: calc(100% - 60px);
+}
