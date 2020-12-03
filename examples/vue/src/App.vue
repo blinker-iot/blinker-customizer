@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div v-bind:style="{marginTop:headerHeight+'px'}">
-      <BlinkerDevice />
+      <BlinkerDevice v-if="headerHeight!=0" />
     </div>
   </div>
 </template>

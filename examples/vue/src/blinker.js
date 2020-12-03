@@ -4,7 +4,7 @@ blinker.prototype.headerHeight = '0';
 blinker.prototype.appData = {};
 
 export function send2Device(data) {
-    console.log(data);
+    // console.log(data);
     window.parent.postMessage(data, "*");
 }
 
